@@ -1,0 +1,12 @@
+Tkinter Classes:
+Tk - Creates Window
+Button - Creates Button
+Label - Creates Text
+Frame - Creates Frame
+RadioButton - Creates Options to pick one of them
+
+
+Tkinter Aligning Methods:
+pack - ממקם את האובייקט שאתה יוצר במקום רנדומלי, ממורכז
+grid -
+place - מיקום ידני על ידי פיקסלים, לדוגמא 0,0 ימקם למעלה צד שמאל
