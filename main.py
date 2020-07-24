@@ -4,7 +4,7 @@ from design import *
 from crypt import encrypt_message, decrypt_message
 import datetime
 
-file_name = str(datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S"))
+
 root = tk.Tk()
 root.title('Final Project')
 root.geometry('1080x720')
@@ -50,7 +50,8 @@ result_text_decrypt = tk.Label(right_frame, text="", font=TEXT_DESIGN, bg=WINDOW
 result_text_decrypt.pack(side=tk.TOP, pady=100)
 
 #Functions of Buttons/File Saves:
-def save_file(folder_name, file_name, text_to_write):
+def save_file(folder_name, text_to_write):
+    file_name = str(datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S"))
     file_to_write = open(f'{folder_name}\\{file_name}.txt', 'w')
     file_to_write.write(f'{text_to_write}')
     file_to_write.close()
@@ -58,13 +59,14 @@ def save_file(folder_name, file_name, text_to_write):
         result_text_encrypt.configure(text=f"Encrypt Text Saved!")
     elif 'decrypt' in folder_name.lower():
         result_text_decrypt.configure(text=f"Decrypt Text Saved!")
+
 def action_encrypt_text(input_type, output_type, text_to_encrypt=None):
     if input_type == 'text':
         encrypted_text = encrypt_message(text_to_encrypt)
         if output_type == "text":
             result_text_encrypt.configure(text=encrypted_text)
         elif output_type == "file":
-            save_file('EncryptedMessages', file_name, encrypted_text)
+            save_file('EncryptedMessages', encrypted_text)
     elif input_type =='file':
         file_to_open = askopenfilename()
         file_to_read = open(file_to_open, 'r')
@@ -75,7 +77,7 @@ def action_encrypt_text(input_type, output_type, text_to_encrypt=None):
             result_text_encrypt.configure(text=encrypted_text)
         elif output_type == "file":
             encrypted_text = encrypt_message(file_content)
-            save_file('EncryptedMessages', file_name, encrypted_text)
+            save_file('EncryptedMessages', encrypted_text)
 
 
 def action_decrypt_text(input_type, output_type, text_to_decrypt=None):
@@ -84,7 +86,7 @@ def action_decrypt_text(input_type, output_type, text_to_decrypt=None):
         if output_type == "text":
             result_text_decrypt.configure(text=decrypted_text)
         elif output_type == "file":
-            save_file('DecryptedMessages', file_name, decrypted_text)
+            save_file('DecryptedMessages', decrypted_text)
     elif input_type =='file':
         file_to_open = askopenfilename()
         file_to_read = open(file_to_open, 'r')
@@ -95,7 +97,7 @@ def action_decrypt_text(input_type, output_type, text_to_decrypt=None):
             result_text_decrypt.configure(text=decrypted_text)
         elif output_type == "file":
             decrypted_text = decrypt_message(file_content)
-            save_file('DecryptedMessages', file_name, decrypted_text)
+            save_file('DecryptedMessages', decrypted_text)
 
 
 
