@@ -10,3 +10,17 @@ Tkinter Aligning Methods:
 pack - ממקם את האובייקט שאתה יוצר במקום רנדומלי, ממורכז
 grid -
 place - מיקום ידני על ידי פיקסלים, לדוגמא 0,0 ימקם למעלה צד שמאל
+
+
+How to Print text from tk.Entry ?
+
+Create StringVar variable
+Refer this variable to the Entry (textvariable=variable)
+Make a button with command that will take care of printing the variable
+
+
+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"):
+This will give back the date and the time of now,
+without the milliseconds
+
+__init__
